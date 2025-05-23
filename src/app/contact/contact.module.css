@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+}
+
+.leftSide, .rightSide {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: opacity 1s ease;
+}
+
+.leftSide {
+  background-color: #f5f5f5;
+  opacity: 0;
+}
+
+.rightSide {
+  background-color: #e5e5e5;
+  opacity: 0;
+}
+
+.container:hover .leftSide:hover {
+  opacity: 1;
+}
+
+.container:hover .rightSide:hover {
+  opacity: 1;
+}
+
+/* Corrected - now using class selector */
+.heading {
+  font-size: 3rem;
+  color: #333;
+}
+#cursor{
+  height: 40px;
+  width: 40px;
+  background-color: rgb(255, 0, 0);
+  border-radius: 50%;
+  position: fixed;
+}

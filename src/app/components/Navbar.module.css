@@ -1,0 +1,32 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  z-index: 10;
+  background-color: red;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: large;
+  color: black;
+  margin: 0;
+}
+
+.pages {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+}
+
+.pages h4 {
+  font-weight: 600;
+  font-size: large;
+  color: black;
+}
