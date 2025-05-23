@@ -13,7 +13,7 @@ export default function Scene() {
   return (
     <group rotation={[0,1.4,0.5]}>
     <mesh ref={cyl }>
-                <cylinderGeometry args={[0.7, 0.7, 0.7, 60, 60, true ]}/>
+                <cylinderGeometry args={[0.8, 0.8, 0.8, 60, 60, true ]}/>
                 <meshStandardMaterial map={tex}  transparent side={THREE.DoubleSide}/>
               </mesh>
     </group>
