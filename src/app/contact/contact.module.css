@@ -1,7 +1,7 @@
 .container {
     display: flex;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
 }
 
 .leftSide, .rightSide {
@@ -12,6 +12,8 @@
     align-items: center;
     transition: opacity 1s ease;
     padding: 80px 0;
+    height: 100vh;
+    width:50vw
 }
 
 .leftSide {
@@ -33,19 +35,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px 0;
+    
 }
 
-.heading {
-    font-size: 2rem;
-    color: #333;
-    margin: 0;
-}
 
 .mainHeading {
-    font-size: 4rem;
+    font-size: 4vw;
     color: #222;
-    margin: 10px 0 0 0;
+    margin-top: 2vh;
+    
 }
 
 .listContainer {
@@ -64,25 +62,26 @@
 .listItem {
     display: flex;
     align-items: center;
-    gap: 15px;
-    font-size: 1.5rem;
+    gap: 2vw;
+    font-size: 1.5vw;
     color: #444;
-    margin: 20px 0;
-    padding: 10px 20px;
+    margin: 2vw 0;
+    padding-top: 0.5vw;
+    padding-bottom: 0.5vw;
     transition: all 0.3s ease;
     background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
+    border-radius: 1vw;
 }
 
 .listItem:hover {
     transform: scale(1.05);
-    background: rgba(255, 255, 255, 0.4);
+    background: rgb(255, 0, 0);
     cursor: pointer;
 }
 
 .svgContainer {
-    width: 40px;
-    height: 40px;
+    width: 1.5vw;
+    height: 1.5vw;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,7 +104,4 @@
 }
 .ha1{
     display: flex;
-}
-.ha1 h2{
-    margin-top: 40px;;
 }

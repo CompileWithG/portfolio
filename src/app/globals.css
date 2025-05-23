@@ -23,16 +23,17 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  background-color: red;
 }
 #page1 {
   height: 100vh;
-  width: 100%;
-  
+  width: 100vw;
+  background-color: #111;
 }
 
 #title {
   font-weight: 800;
-  font-size: 1.6rem;          /* Large base size */
+  font-size: 1.5vw;          /* Large base size */
   white-space: nowrap;      /* No text wrapping */
   display: flex;
   justify-content: center;
@@ -41,7 +42,9 @@ body {
   top: 30%;                 /* Adjusted position */
   left: 50%;
   transform: translate(-50%, -50%) scale(1.5); /* Center + scale */
-  padding: 20px;            /* Spacing around text */
+  margin-left: 1vw;
+  margin-right: 1vw;  
+  margin-top: 5vh;         /* Spacing around text */
   z-index: 9;               /* behind nav but above content */
 }
 
@@ -53,7 +56,7 @@ h1 {
 
 #page2 {
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   background-color: red;
   display: flex;
   justify-content: center;
@@ -80,18 +83,24 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center ;
+  margin-left: 1vw;
+  margin-right: 1vw;
+  margin-top: 3vh;
+  margin-bottom: 3vh;
 }
 #string svg{
   padding-left: 30px;
   padding-right: 30px;
 }
 #links {
-  margin-bottom: 110px;
+  margin-top: 10vh;
+  margin-left: 1vw;
+  margin-right: 1vw;
   bottom: 50px;
   width: 100%;
-  display: grid;
-  grid-template-rows: repeat(3, auto);
-  row-gap: 15px; /* Vertical spacing between steps */
+  display: flex;
+  gap: 10vw;
+  justify-content: center;
   height: 200px;
   width: 200px;
   align-self: flex-end;
@@ -100,10 +109,22 @@ h1 {
 #links h2{
   display: flex;
   white-space: nowrap;
+  font-size: 2vw;
 }
 #links p{
   margin-top: 35px;
   font-weight: 800;
   margin-left: 20px;
 }
-
+#img1,#img2,#img3{
+  display: flex;
+  font-size: 3vw;
+  margin-top: 25vh;
+  margin-left: 3vw;
+  bottom: 3vh
+}
+@media (max-width:478px){
+  #title{
+     white-space: wrap;      
+  }
+} 

@@ -1,124 +1,111 @@
-"use client"
+"use client";
 import Navbar from "./components/Navbar";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger"; 
-import { useLayoutEffect, useRef, useEffect } from 'react';
-import dynamic from 'next/dynamic';
-import { Montserrat } from 'next/font/google';
-import gsap from 'gsap';
+import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
+import { useLayoutEffect, useRef, useEffect } from "react";
+import dynamic from "next/dynamic";
+import { Montserrat } from "next/font/google";
+import gsap from "gsap";
 import Link from "next/link";
 
-const montserrat = Montserrat({ subsets: ['latin'], weight: ['300', '400', '500', '700', '900'] });
+const montserrat = Montserrat({ subsets: ["latin"], weight: ["300", "400", "500", "700", "900"] });
 
 export default function Home() {
-  var path = `M 10 300 Q 500 290 990 300`;
-  var finalPath = `M 10 300 Q 500 290 990 300`;
+  const containerRef = useRef<HTMLDivElement>(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const stringRef = useRef<HTMLDivElement>(null);
+  const titleRef = useRef<HTMLDivElement>(null);
+  const img1Ref = useRef<HTMLHeadingElement>(null);
+  const img2Ref = useRef<HTMLHeadingElement>(null);
+  const img3Ref = useRef<HTMLHeadingElement>(null);
+
+  const pathStart = `M 10 300 Q 500 290 990 300`;
+  let rafId: number | null = null;
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    var main = document.querySelector("#main");
-    var cursor = document.querySelector("#cursor");
-    var string = document.querySelector("#string");
-    var title = document.querySelector("#title");
-    var img1 = document.querySelector("#img1");
-    var img2 = document.querySelector("#img2");
-    var img3 = document.querySelector("#img3");
+
+    const cursor = cursorRef.current;
+    const string = stringRef.current;
+    const title = titleRef.current;
+    const img1 = img1Ref.current;
+    const img2 = img2Ref.current;
+    const img3 = img3Ref.current;
+
+    const quickX = gsap.quickTo(cursor, "x", { duration: 0.3, ease: "power3.out" });
+    const quickY = gsap.quickTo(cursor, "y", { duration: 0.3, ease: "power3.out" });
+
+    const moveCursor = (e: MouseEvent) => {
+      quickX(e.clientX);
+      quickY(e.clientY);
+    };
+
+    document.addEventListener("mousemove", moveCursor);
 
     const handleMouseEnter = () => gsap.to(cursor, { scale: 4 });
     const handleMouseLeave = () => gsap.to(cursor, { scale: 1 });
 
-    title?.addEventListener("mouseenter", handleMouseEnter);
-    title?.addEventListener("mouseleave", handleMouseLeave);
-    img1?.addEventListener("mouseenter", handleMouseEnter);
-    img1?.addEventListener("mouseleave", handleMouseLeave);
-    img2?.addEventListener("mouseenter", handleMouseEnter);
-    img2?.addEventListener("mouseleave", handleMouseLeave);
-    img3?.addEventListener("mouseenter", handleMouseEnter);
-    img3?.addEventListener("mouseleave", handleMouseLeave);
-
-    gsap.to("#links #img1", {
-      scale: 2,
-      x: -300,
-      duration: 1.5,
-      ease: "back.out",
-      scrollTrigger: {
-        trigger: "#links h2",
-        scroller: "body",
-        scrub: 5
-      }
+    [title, img1, img2, img3].forEach((el) => {
+      el?.addEventListener("mouseenter", handleMouseEnter);
+      el?.addEventListener("mouseleave", handleMouseLeave);
     });
 
-    gsap.to("#links #img2", {
-      scale: 1.5,
-      x: 30,
-      duration: 1.5,
-      ease: "back.out",
-      scrollTrigger: {
-        trigger: "#links h2",
-        scroller: "body",
-        scrub: 5
-      }
-    });
-
-    gsap.to("#links #img3", {
-      scale: 1.5,
-      x: 320,
-      duration: 1.5,
-      ease: "back.out",
-      scrollTrigger: {
-        trigger: "#links h2",
-        scroller: "body",
-        scrub: 5
-      }
-    });
-
-    string?.addEventListener("mousemove", function(dets) {
-      path = `M 10 300 Q ${dets.x} ${dets.y - 320} 990 300`;
-      gsap.to("svg path", {
-        attr: { d: path },
-        duration: 0.3,
-        ease: "power3.out"
+    // Throttle path animation
+    const handlePathMove = (e: MouseEvent) => {
+      if (rafId) return;
+      rafId = requestAnimationFrame(() => {
+        const path = `M 10 300 Q ${e.clientX} ${e.clientY - 320} 990 300`;
+        gsap.to("svg path", {
+          attr: { d: path },
+          duration: 0.3,
+          ease: "power3.out",
+        });
+        rafId = null;
       });
-    });
+    };
 
-    main?.addEventListener("mousemove", function(dets) {
-      gsap.to(cursor, {
-        x: dets.x,
-        y: dets.y,
-        duration: 1
-      });
-    });
+    string?.addEventListener("mousemove", handlePathMove);
 
-    string?.addEventListener("mouseleave", function() {
+    string?.addEventListener("mouseleave", () => {
       gsap.to("svg path", {
-        attr: { d: finalPath },
+        attr: { d: pathStart },
         duration: 0.8,
-        ease: "elastic.out(1, 0.2)"
+        ease: "elastic.out(1, 0.2)",
+      });
+    });
+
+    // ScrollTrigger animations
+    [img1, img2, img3].forEach((img) => {
+      gsap.to(img, {
+        scale: 2,
+        duration: 1.5,
+        ease: "back.out",
+        scrollTrigger: {
+          trigger: "#links h2",
+          scroller: "body",
+          scrub: 1,
+        },
       });
     });
 
     return () => {
-      title?.removeEventListener("mouseenter", handleMouseEnter);
-      title?.removeEventListener("mouseleave", handleMouseLeave);
-      img1?.removeEventListener("mouseenter", handleMouseEnter);
-      img1?.removeEventListener("mouseleave", handleMouseLeave);
-      img2?.removeEventListener("mouseenter", handleMouseEnter);
-      img2?.removeEventListener("mouseleave", handleMouseLeave);
-      img3?.removeEventListener("mouseenter", handleMouseEnter);
-      img3?.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mousemove", moveCursor);
+      [title, img1, img2, img3].forEach((el) => {
+        el?.removeEventListener("mouseenter", handleMouseEnter);
+        el?.removeEventListener("mouseleave", handleMouseLeave);
+      });
+      string?.removeEventListener("mousemove", handlePathMove);
+      cancelAnimationFrame(rafId || 0);
     };
   }, []);
 
-  const containerRef = useRef<HTMLDivElement>(null);
-
   useLayoutEffect(() => {
     const initAnimations = async () => {
-      const gsap = (await import('gsap')).default;
-      const ScrollTrigger = (await import('gsap/ScrollTrigger')).default;
+      const gsap = (await import("gsap")).default;
+      const ScrollTrigger = (await import("gsap/ScrollTrigger")).default;
       gsap.registerPlugin(ScrollTrigger);
 
       const ctx = gsap.context(() => {
-        
-
+        // Future scoped animations can go here
       }, containerRef);
 
       return () => ctx.revert();
@@ -131,9 +118,11 @@ export default function Home() {
     <main id="main" className={montserrat.className} ref={containerRef}>
       <div id="page1">
         <Navbar />
-        <div id="cursor"></div>
-        <div id="title">Turning Ideas into Code: Portfolio of Karthik Anish Joseph</div>
-        <div id="string">
+        <div id="cursor" ref={cursorRef}></div>
+        <div id="title" ref={titleRef}>
+          Turning Ideas into Code: Portfolio of Karthik Anish Joseph
+        </div>
+        <div id="string" ref={stringRef}>
           <svg width="1000" height="600">
             <path d="M 10 300 Q 500 290 990 300" stroke="white" fill="transparent" />
           </svg>
@@ -141,17 +130,14 @@ export default function Home() {
       </div>
       <div id="page2">
         <div id="links">
-          <h2  id="img1">
-            <img width="80" height="80" src="https://img.icons8.com/ios-filled/100/learning.png" alt="learning"/>
-            <p>Learning</p>
+          <h2 id="img1" ref={img1Ref}>
+            &#x2022; Learning
           </h2>
-          <h2  id="img2">
-            <img width="90" height="90" src="https://img.icons8.com/metro/52/console.png" alt="console"/>
-            <p>Building</p>
+          <h2 id="img2" ref={img2Ref}>
+            &#x2022; Building
           </h2>
-          <h2  id="img3">
-            <img width="90" height="90" src="https://img.icons8.com/dotty/80/bullish.png" alt="bullish"/>
-            <p>Growing</p>
+          <h2 id="img3" ref={img3Ref}>
+            &#x2022; Growing
           </h2>
         </div>
       </div>

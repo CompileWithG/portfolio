@@ -30,3 +30,12 @@
   font-size: large;
   color: black;
 }
+/* For screens 314px and below */
+@media (max-width: 314px) {
+  .pages {
+    display: grid;
+    grid-template-columns: 1fr; /* Single column */
+    justify-items: center;
+    gap: 15px;
+  }
+}

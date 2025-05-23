@@ -109,7 +109,7 @@ export default function SplitPage() {
                     
                     <div className={styles.headingContainer}>
                         <div className={styles.ha1}>
-                            <h2 className={styles.heading}>my</h2>
+                            
                             <h1 className={styles.mainHeading}>Socials</h1>
                         </div>
                     </div>
@@ -141,7 +141,7 @@ export default function SplitPage() {
                     
                     <div className={styles.headingContainer}>
                         <div className={styles.ha1}>
-                            <h2 className={styles.heading}>my</h2>
+                            
                             <h1 className={styles.mainHeading}>Emails</h1>
                         </div>
                     </div>
