@@ -66,6 +66,7 @@ h1 {
   background-color: rgb(255, 215, 0);
   border-radius: 50%;
   position: fixed;
+  mix-blend-mode: difference;
 }
 
 #string{
@@ -103,5 +104,6 @@ h1 {
 #links p{
   margin-top: 35px;
   font-weight: 800;
+  margin-left: 20px;
 }
 

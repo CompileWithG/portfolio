@@ -1,0 +1,15 @@
+#page1{
+    height:100vh;
+    width: 100%;
+    background-color: #111;
+}
+#page2{
+    height:100vh;
+    width: 100%;
+    background-color:aquamarine;
+}
+#page3{
+    height:100vh;
+    width: 100%;
+    background-color:red;
+}

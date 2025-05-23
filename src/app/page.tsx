@@ -49,7 +49,7 @@ export default function Home() {
 
     gsap.to("#links #img2", {
       scale: 1.5,
-      x: -10,
+      x: 30,
       duration: 1.5,
       ease: "back.out",
       scrollTrigger: {
@@ -61,7 +61,7 @@ export default function Home() {
 
     gsap.to("#links #img3", {
       scale: 1.5,
-      x: 250,
+      x: 320,
       duration: 1.5,
       ease: "back.out",
       scrollTrigger: {
@@ -141,17 +141,17 @@ export default function Home() {
       </div>
       <div id="page2">
         <div id="links">
-          <h2 onClick={() => window.open('https://github.com/CompileWithG', '_blank')} id="img1">
-            <img width="94" height="94" src="https://img.icons8.com/sf-black-filled/64/github.png" alt="github" />
-            <p>CompileWithG</p>
+          <h2  id="img1">
+            <img width="80" height="80" src="https://img.icons8.com/ios-filled/100/learning.png" alt="learning"/>
+            <p>Learning</p>
           </h2>
-          <h2 onClick={() => window.open('https://www.linkedin.com/in/karthik-anish-482464294/', '_blank')} id="img2">
-            <img width="94" height="94" src="https://img.icons8.com/isometric/50/linkedin.png" alt="linkedin" />
-            <p>Karthik Anish</p>
+          <h2  id="img2">
+            <img width="90" height="90" src="https://img.icons8.com/metro/52/console.png" alt="console"/>
+            <p>Building</p>
           </h2>
-          <h2 onClick={() => window.open('https://www.instagram.com/karthicxxz?igsh=MXB5c3NkZ2JqamJlbQ==', '_blank')} id="img3">
-            <img width="94" height="94" src="https://img.icons8.com/isometric/50/instagram-new.png" alt="instagram-new" />
-            <p>karthicxxz</p>
+          <h2  id="img3">
+            <img width="90" height="90" src="https://img.icons8.com/dotty/80/bullish.png" alt="bullish"/>
+            <p>Growing</p>
           </h2>
         </div>
       </div>

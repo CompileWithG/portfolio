@@ -1,7 +1,10 @@
-import type { NextConfig } from "next";
+// next.config.ts
+import type { NextConfig } from 'next';
+import withTM from 'next-transpile-modules';
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  transpilePackages: ['three'],
+  // other configurations...
 };
 
-export default nextConfig;
+export default withTM(['three'])(nextConfig);
