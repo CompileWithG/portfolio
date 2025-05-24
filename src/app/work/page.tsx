@@ -92,8 +92,8 @@ export default function Work() {
     // Skew scroll effect for page3 with limits
     let currentPos = window.pageYOffset;
     let animationFrameId: number;
-    let maxSkew = 10; // Maximum skew angle in degrees
-    let skewFactor = 0.1; // Reduce the skew intensity
+    let maxSkew = 50; // Maximum skew angle in degrees
+    let skewFactor = 1; // Reduce the skew intensity
 
     const applySkew = () => {
       if (!distortRef.current) return;
