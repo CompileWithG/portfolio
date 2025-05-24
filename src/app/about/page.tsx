@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect } from 'react';
-import { Noto_Serif_Display } from '@next/font/google';
+import { Noto_Serif_Display } from 'next/font/google';
 import Navbar from '../components/Navbar';
 import styles from "./about.module.css"
 import gsap from 'gsap';

@@ -148,7 +148,7 @@
     font-size: 5rem;
     color: white;
 }
-body{
+:global(body) {
   overflow-x: hidden;
 }
 /* Different colors for each boxl */
