@@ -121,7 +121,8 @@ h1 {
   font-size: 3vw;
   margin-top: 25vh;
   margin-left: 3vw;
-  bottom: 3vh
+  bottom: 3vh;
+  margin-bottom: 7vh;;
 }
 @media (max-width:478px){
   #title{
