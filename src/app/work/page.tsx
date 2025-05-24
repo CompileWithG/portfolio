@@ -227,15 +227,15 @@ export default function Work() {
           <section className={styles.distort} ref={distortRef}>
             <div>
               <img src="./yt.jpg" alt="Image 1" />
-              <h1>Yt To Mp4/Mp3 Converter</h1>
+              <h1><a href="https://yt-to-mp3-mp4-converter.vercel.app/" target='_blank'>Yt To Mp4/Mp3 Converter</a></h1>
               <p>
                 This project allows you to download YouTube videos or audios in MP3 or MP4 format.
-https://github.com/CompileWithG/yt-to-mp3-mp4-converter
+
               </p>
             </div>
             <div>
               <img src="./golang.png" alt="Image 2" />
-              <h1>Go-Gin-authentication Sever</h1>
+              <h1><a href="https://github.com/CompileWithG/go_programs/tree/4e971e1e1d6f8ea709dce7530b40df24530d5a1d/go-gin-auth" target='_blank'>Go-Gin-authentication-Server</a></h1>
               <p>
                 Designed and implemented a reliable authentication server, leveraging MongoDB for secure user data
 storage, to facilitate seamless user signup and login experiences.
@@ -243,7 +243,7 @@ storage, to facilitate seamless user signup and login experiences.
             </div>
             <div>
               <img src="./ai.jpg" alt="Image 3" />
-              <h1>AI-Cost-Optimization-For-Buissnesses</h1>
+              <h1><a href="https://github.com/CompileWithG/ai-cost-optimization" target='_blank'>AI-Cost-Optimization-For-Buisness</a></h1>
               <p>
                 This project is a solution to budding businesses to formulate a business plan to help them in the long
 term. The financial and logistical data should be fed as input to the AI model which will then generate a
