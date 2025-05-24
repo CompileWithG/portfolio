@@ -15,6 +15,8 @@ const montserrat = Montserrat({ subsets: ['latin'], weight: ['300', '400', '500'
 
 export default function Work() {
   const horizontalContainerRef = useRef<HTMLDivElement>(null);
+  const page3Ref = useRef<HTMLDivElement>(null);
+  const distortRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -54,6 +56,7 @@ export default function Work() {
       });
     }
 
+    // Mouse-based animations
     window.addEventListener("wheel", function (dets) {
       const marqueElements = document.querySelectorAll(`.${styles.marque}`);
       marqueElements.forEach((marque) => {
@@ -86,8 +89,54 @@ export default function Work() {
       });
     });
 
+    // Skew scroll effect for page3 with limits
+    let currentPos = window.pageYOffset;
+    let animationFrameId: number;
+    let maxSkew = 10; // Maximum skew angle in degrees
+    let skewFactor = 0.1; // Reduce the skew intensity
+
+    const applySkew = () => {
+      if (!distortRef.current) return;
+      
+      const newPos = window.pageYOffset;
+      const diff = newPos - currentPos;
+      let speed = diff * skewFactor;
+      
+      // Limit the skew angle
+      speed = Math.min(maxSkew, Math.max(-maxSkew, speed));
+      
+      distortRef.current.style.transform = `skewY(${speed}deg)`;
+      currentPos = newPos;
+      animationFrameId = requestAnimationFrame(applySkew);
+    };
+
+    // Only start skew animation when page3 is in view
+    const page3Observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        animationFrameId = requestAnimationFrame(applySkew);
+      } else {
+        cancelAnimationFrame(animationFrameId);
+        if (distortRef.current) {
+          distortRef.current.style.transform = 'skewY(0deg)';
+        }
+      }
+    }, { threshold: 0.1 });
+
+    if (page3Ref.current) {
+      page3Observer.observe(page3Ref.current);
+    }
+
+    // Cleanup function
     return () => {
+      cancelAnimationFrame(animationFrameId);
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+      window.removeEventListener("wheel", () => {});
+      title?.removeEventListener("mouseenter", () => {});
+      title?.removeEventListener("mouseleave", () => {});
+      main?.removeEventListener("mousemove", () => {});
+      if (page3Ref.current) {
+        page3Observer.unobserve(page3Ref.current);
+      }
     };
   }, []);
 
@@ -173,7 +222,33 @@ export default function Work() {
         </div>
       </div>
 
-      <div id={styles.page3}></div>
+      <div id={styles.page3} ref={page3Ref}>
+        <div className={styles.content}>
+          <section className={styles.distort} ref={distortRef}>
+            <div>
+              <img src="./img-01.jpg" alt="Image 1" />
+              <h1>Boundary Supply</h1>
+              <p>
+                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+              </p>
+            </div>
+            <div>
+              <img src="./img-02.jpg" alt="Image 2" />
+              <h1>Nomadic Backpack</h1>
+              <p>
+                The Nomadic Backpack blends utility and style with unmatched durability. Whether you're hiking a mountain or navigating city streets, this bag adapts to your needs while turning heads.
+              </p>
+            </div>
+            <div>
+              <img src="./img-03.jpg" alt="Image 3" />
+              <h1>Explorer Series</h1>
+              <p>
+                Designed for adventurers, the Explorer Series offers maximum space, intelligent compartments, and weather resistance. Ready to follow you through rain, snow, or shine.
+              </p>
+            </div>
+          </section>
+        </div>
+      </div>
     </main>
   );
 }
