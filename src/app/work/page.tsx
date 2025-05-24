@@ -226,24 +226,28 @@ export default function Work() {
         <div className={styles.content}>
           <section className={styles.distort} ref={distortRef}>
             <div>
-              <img src="./img-01.jpg" alt="Image 1" />
-              <h1>Boundary Supply</h1>
+              <img src="./yt.jpg" alt="Image 1" />
+              <h1>Yt To Mp4/Mp3 Converter</h1>
               <p>
-                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English.
+                This project allows you to download YouTube videos or audios in MP3 or MP4 format.
+https://github.com/CompileWithG/yt-to-mp3-mp4-converter
               </p>
             </div>
             <div>
-              <img src="./img-02.jpg" alt="Image 2" />
-              <h1>Nomadic Backpack</h1>
+              <img src="./golang.png" alt="Image 2" />
+              <h1>Go-Gin-authentication Sever</h1>
               <p>
-                The Nomadic Backpack blends utility and style with unmatched durability. Whether you're hiking a mountain or navigating city streets, this bag adapts to your needs while turning heads.
+                Designed and implemented a reliable authentication server, leveraging MongoDB for secure user data
+storage, to facilitate seamless user signup and login experiences.
               </p>
             </div>
             <div>
-              <img src="./img-03.jpg" alt="Image 3" />
-              <h1>Explorer Series</h1>
+              <img src="./ai.jpg" alt="Image 3" />
+              <h1>AI-Cost-Optimization-For-Buissnesses</h1>
               <p>
-                Designed for adventurers, the Explorer Series offers maximum space, intelligent compartments, and weather resistance. Ready to follow you through rain, snow, or shine.
+                This project is a solution to budding businesses to formulate a business plan to help them in the long
+term. The financial and logistical data should be fed as input to the AI model which will then generate a
+tailor made business plan with all specifics and roadmap.
               </p>
             </div>
           </section>
