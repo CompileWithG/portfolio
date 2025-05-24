@@ -9,22 +9,28 @@
 }
 
 #page1 {
-  height: 100vh;
+  min-height: 100vh; /* allow vertical flexibility */
   width: 100%;
   background-color: #111;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  padding-top: clamp(120px, 20vh, 200px); /* dynamic padding for navbar space */
   padding-bottom: 100px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+  overflow: hidden; /* change to auto if scroll is preferred */
 }
 
 #page1 h1 {
   color: aliceblue;
   text-align: center;
   font-family: "Neue Machina", sans-serif;
-  font-size: clamp(2rem, 8vw, 6rem);
-  margin-top: clamp(50px, 10vh, 150px);
+  font-size: clamp(2.5rem, 8vw, 6rem); /* responsive sizing */
+  margin: 0;
   z-index: 3;
+  position: relative;
 }
 
 .canvasContainer {
@@ -38,7 +44,12 @@
   height: 100%;
 }
 
-#page2,
+#page2 {
+  height: 100vh;
+  width: 100%;
+  background-color: #111;
+}
+
 #page3 {
   height: 100vh;
   width: 100%;
