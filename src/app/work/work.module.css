@@ -148,9 +148,7 @@
     font-size: 5rem;
     color: white;
 }
-:global(body) {
-  overflow-x: hidden;
-}
+
 /* Different colors for each boxl */
 .box1 { background-color: #1a1a2e; }
 .box2 { background-color: #16213e; }
